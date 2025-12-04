@@ -28,41 +28,41 @@ The Job Portal application (Job Link) is a web interface that allows users to up
 - JWT: JSON Web Token
 
 # Background
-Whenever we need to look for another role due to being laid off or simply exploring other opportunities, the job portal application is a place to track your application status. Users can apply to as many applications as they desired while keeping a log of application were sent. The Job Portal web interface allows a centralized platform to help monitor your application status within your profile.
+ The Job Link application provides user a place to explore open opportunities and to track application submissions. Users can apply to as many applications as they desire while keeping a log of applications sent to open roles. The Job Link web interface allows a centralized platform to help monitor your application status within your profile.
 
 # User Experience
   ## Login Screen
   Users are navigated to the login page. They are presented with an email and password field including "Sign In" and "Sign Up" buttons.
 
-  ![job-portal-login](../.attachments/JobPortalLogin.png =700x)
+  ![job-portal-login](/attachments/JobPortalLogin.png)
 
   ## Registration Screen
   If a user needs to create an account, they can do so by clicking the "Sign Up" button where they are navigated to the Sign Up form screen. This is where users are required to add their credentials to create an account.
 
-  ![job-portal-signup](../.attachments/JobPortalSignup.png =700x)
+  ![job-portal-signup](/attachments/JobPortalSignup.png)
 
   ## File Upload Screen
-  Once a user logs into the web interface successfully, the user is presented with a screen that contains a sidebar with links to the dashboard and job search search screens. The side bar component also has help and setting links at the footer of the screen. Headers can profile image with the name of the user next to the image. In the main screen, there is a component with a icon inside a dotted box to upload a document. A user can upload a pdf or text document that can be stored into the application.
+  Once a user logs into the web interface successfully, the user is presented with a screen that contains a sidebar with links to the dashboard and job search screens. The side bar component also has the "Help" and "Settings" links at the footer of the side bar area. Headers contains a profile image with the name of the user next to the image. In the main screen, there is a component with a icon inside a dotted box to upload a document. A user can upload a pdf or text document that is stored in an external storage database.
 
-  ![job-portal-file-upload](../.attachments/JobPortalFileUpload.png =700x)
+  ![job-portal-file-upload](/attachments/JobPortalFileUpload.png)
 
   ## File Upload Successful Screen
   Once a user successfully uploads a document into the application, the icon and the content inside the dotted box is replaced with a check mark, confirming the document has been successfully uploaded. There is a message displayed underneath the box and a button displayed as "View Jobs" indicating that the file has been uploaded into the interface.
 
-  ![job-portal-file-upload-successful](../.attachments/JobPortalFileUploadSuccess.png =700x)
+  ![job-portal-file-upload-successful](/attachments/JobPortalFileUploadSuccess.png)
 
   ## Dashboard Screen
-  The dashboard screen provides a comprehensive line chart that includes analytics on the amount of applications are sent, interviews scheduled, and job posting available.
+  The dashboard screen provides a comprehensive line chart that includes analytics on the amount of applications sent, interviews scheduled, and job postings available.
 
-  ![job-portal-dashboard](../.attachments/JobPortalDashboard.png =700x)
+  ![job-portal-dashboard](/attachments/JobPortalDashboard.png)
 
   ## Job Search Screen
-  The job search link provides a list of job posting for users to apply to. The user can simply click the "Apply Now" button and navigate to the company's career page to the role that is listed on a user's profile. There is also a search bar above the list of roles to search for a specific posting.
+  The job search link provides a list of job postings for users to apply to. The user can simply click the "Apply Now" button and navigate to the company's career page and apply to the role that is listed on the site. There is also a search bar above the list of roles to search for a specific posting.
 
-  ![job-portal-search](../.attachments/JobPortalSearch.png =700x)
+  ![job-portal-search](/attachments/JobPortalSearch.png)
 
 # Security Configurations
-- The application is utilizing spring security to authenticate users when they log into the application. Once a user registers and creates a profile in the application, their user credentials are generated with a new generated token and saved in the database. A JWT token is generated and the user can successfully log into the app.
+- The application is utilizing spring security to authenticate users when they log into the application. Once a user registers and creates a profile in the application, the user's credentials are generated with a new generated token where the token is used to verify and authenticate the user in the backend. A JWT token is generated and the user can successfully log into the app.
 - The OAuth 2.0 is utilized to authenticate and make client calls to the API to retrieve job listings.
 
 # Dependencies
@@ -77,8 +77,8 @@ Whenever we need to look for another role due to being laid off or simply explor
     - Body:
       ```
       {
-        "email": "test.user@dev.com"
-        "password": "mySecuredPassword"
+        "username": "myusername"
+        "userPassword": "mySecuredPassword"
       }
       ```
   - **Response**
@@ -94,16 +94,19 @@ Whenever we need to look for another role due to being laid off or simply explor
     - Body:
       ```
       {
-        "firstName": "Test"
-        "lastName": "User"
-        "email": "test.user@dev.com"
-        "password": "mySecuredPassword"
+        "firstName": "Test",
+        "lastName": "User",
+        "username": "myusername",
+        "userEmail": "test.user@dev.com",
+        "userPassword": "mySecuredPassword",
+        "createdTimestamp": "2025-12-04T16:03:39.584Z",
+        "updatedTimestamp": "2025-12-04T16:03:39.584Z"
       }
       ```
   - **Response**
     - Status code: 200
     ```
-    Test User has successfully completed registration.
+    User registered successfully.
     ```
   ## Retrieve Job Postings
   - Retrieve a list of job postings and display the them in the job search screen.
@@ -117,36 +120,36 @@ Whenever we need to look for another role due to being laid off or simply explor
     "postings": [
       {
         "id": 1345
-        "jobTitle": "Frontend Engineer",
-        "jobUrl": "https://www.indeed.com/pagead/frontend%engineer,
-        "companyLogo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
-        "companyName": "Intellistack",
-        "companyAddress": "Moorepark, CA 93021",
-        "companySalary": "$125,000 - $130,000 a year",
-        "companyMetadata": ["Full-time", "401(k)","Paid time off"],
-        "datePosted": "4 days ago"
+        "job_title": "Frontend Engineer",
+        "job_url": "https://www.indeed.com/pagead/frontend%engineer,
+        "company_logo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
+        "company_name": "Intellistack",
+        "company_address": "Moorepark, CA 93021",
+        "company_salary": "$125,000 - $130,000 a year",
+        "company_metadata": ["Full-time", "401(k)","Paid time off"],
+        "date_posted": "4 days ago"
       },
       {
         "id": 1346
-        "jobTitle": "Senior Software Engineer",
-        "jobUrl": "https://www.indeed.com/pagead/senior%software%engineer,
-        "companyLogo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
-        "companyName": "Netflix",
-        "companyAddress": "Los Angeles, CA 90001",
-        "companySalary": "$167,000 - $210,000 a year",
-        "companyMetadata": ["Full-time", "401(k)","Paid time off", "Health Insurance],
-        "datePosted": "3 days ago"
+        "job_title": "Senior Software Engineer",
+        "job_url": "https://www.indeed.com/pagead/senior%software%engineer,
+        "company_name": "Netflix",
+        "company_logo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
+        "company_address": "Los Angeles, CA 90001",
+        "company_salary": "$167,000 - $210,000 a year",
+        "company_metadata": ["Full-time", "401(k)","Paid time off", "Health Insurance],
+        "date_posted": "3 days ago"
       },
       {
         "id": 1347
-        "jobTitle": "Full Stack Engineer",
-        "jobUrl": "https://www.indeed.com/pagead/full%stack%engineer,
-        "companyLogo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
-        "companyName": "Snap, Inc.",
-        "companyAddress": "Santa Monica, CA 92001",
-        "companySalary": "$155,000 - $175,000 a year",
-        "companyMetadata": ["Full-time", "401(k)","Benefits" ],
-        "datePosted": "10 days ago"
+        "job_title": "Full Stack Engineer",
+        "job_url": "https://www.indeed.com/pagead/full%stack%engineer,
+        "company_name": "Snap, Inc.",
+        "company_logo": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/805b99f2c7caa3e66191a79b1e47d418"
+        "company_address": "Santa Monica, CA 92001",
+        "company_salary": "$155,000 - $175,000 a year",
+        "company_metadata": ["Full-time", "401(k)","Benefits" ],
+        "date_posted": "10 days ago"
       }
     ]
     ```
@@ -170,21 +173,21 @@ Whenever we need to look for another role due to being laid off or simply explor
       ```
 # Business Logic
   ## Authentication Flow
-  - As described briefly earlier in the wiki, there is a simple authentication process implemented into the login flow that validates a users credentials through generated tokens. Once a user attempts to log in, the authentication process starts by validating the user's password then creates a generated token and saves it in the database. Once the system confirms that the token saved succesfully in the database, a JWT token is generated and sent to the user to confirm a successful login. If the system discovers that the credentials entered is not valid, an error message is sent to the user and a 400 reponse is returned.
+  As described earlier in the wiki, there is a simple authentication process implemented into the login flow that validates a users credentials through generated tokens. Once a user attempts to log in, the authentication process starts by validating the user's password then hashes the password and saves it in the database. Once the system confirms that the user exists in the database, a JWT token is generated and sent to the user to confirm a successful login. If the system discovers that the credentials entered is not valid, an error message is sent to the user and a 400 reponse is returned.
 
-  ![job-portal-auth-flow](../.attachments/JobPortalAuthFlow.png =500x)
+  ![job-portal-auth-flow](/attachments/JobPortalAuthFlow.png)
 
   ## Backend Service Flow
-  - The Job Portal service holds the logic and routes for fetching job listings and sends the data to the frontend. The service makes client calls to the Job Board API, so the service can fetch and store the listings in the database for retrieval. The service also contains the job-portal-service/portal/upload endpoint to upload documents to Google Storage. Once the document uploads successfully to the storage platform, the resume metadata service, which lives in the Job Board API, scrapes the required meta data from the document to make calls to the api/job-portal endpoint. The api/job-portal returns the job postings and service calls are performed to retrieve and store in the loacal database.
+  The Job Portal service holds the logic and routes for fetching job listings and sends the data to the frontend. The service makes client calls to the Job Board API, so the service can fetch and store the listings in the database for retrieval. The service also contains the job-portal-service/portal/upload endpoint to upload documents to Google Storage. Once the document uploads successfully to the storage platform, the resume metadata service, which lives in the Job Board API, scrapes the required meta data from the document to make calls to the api/job-portal endpoint. The api/job-portal returns the job postings and service calls are performed to retrieve and store in the loacal database.
 
-  ![job-portal-service-flow](../.attachments/JobPortalServiceFlow.png =500x)
+  ![job-portal-service-flow](/attachments/JobPortalServiceFlow.png)
 
   ### Job Board API
-  - The Job Board API contains the CRUD methods to interact with job board data. The Job Portal service makes client calls to the API to retreive updated job board data.
+  The Job Board API contains the CRUD methods to interact with job board data. The Job Portal Service submits client calls to the API to retreive updated job board data.
 
   #### Job Board API Data Model
 
-  ![job-board-api-data-model](../.attachments/JobBoardAPIDataModel.png =300x)
+  ![job-board-api-data-model](/attachments/JobBoardAPIDataModel.png)
 
   The model demonstrates that the job board data is stored in the job_postings table in the database at the API level. The service makes client calls to the API to display the data in the UI.
 
