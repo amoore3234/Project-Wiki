@@ -3,6 +3,7 @@
 - [Terminology](#terminology)
 - [Background](#background)
 - [User Experience](#user-experience)
+  - [Landing Screen](#landing-screen)
   - [Login Screen](#login-screen)
   - [Registration Screen](#registration-screen)
   - [File Upload Screen](#file-upload-screen)
@@ -31,6 +32,11 @@ The Job Portal application (Job Link) is a web interface that allows users to up
  The Job Link application provides user a place to explore open opportunities and to track application submissions. Users can apply to as many applications as they desire while keeping a log of applications sent to open roles. The Job Link web interface allows a centralized platform to help monitor your application status within your profile.
 
 # User Experience
+  ## Landing Screen
+  Users are presented with a landing page when navigated to the job board site. The login and sign up tabs are displayed in the upper right hand corner of the header and the title on the left side. The page also displays a landing title with animation.
+
+  ![job-portal-landing](/attachments/JobPortalLanding.png)
+
   ## Login Screen
   Users are navigated to the login page. They are presented with an email and password field including "Sign In" and "Sign Up" buttons.
 
